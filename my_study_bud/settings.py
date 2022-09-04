@@ -57,7 +57,9 @@ ROOT_URLCONF = 'my_study_bud.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates',  # 增加路径
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
