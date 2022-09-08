@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 from .models import Room, Topic
 from .form import RoomForm
 # Create your views here.
@@ -16,12 +17,13 @@ from .form import RoomForm
 # ]
 
 def loginPage(request):
+    page = 'login'
     # 已经登录的就不让再登录了
     if request.user.is_authenticated:
         return redirect('home')
     
     if request.method=='POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username').lower()
         password = request.POST.get('password')
         try:
             # 验证有没有这个用户
@@ -39,12 +41,29 @@ def loginPage(request):
         else:
             messages.error(request, 'Username OR password dose not exists.')
     
-    context = {}
+    context = {'page':page}
     return render(request, 'base/login_resigter.html', context)
 
 def logoutUser(request):
     logout(request)  # 退出登录
     return redirect('home')
+
+def registerPage(request):
+    page = 'register'
+    form = UserCreationForm()
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False) # 保存並返回給user
+            user.username = user.username.lower()  # 对大小写不敏感了
+            user.save()
+            login(request, user)  # 登录
+            return redirect('home')
+        else:
+            messages.error(request, 'An error occured  during registration')
+            
+    context = {'page': page, 'form':form}
+    return render(request, 'base/login_resigter.html', context)
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
