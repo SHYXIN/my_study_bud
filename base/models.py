@@ -17,7 +17,7 @@ class Room(models.Model):
     topic = models.ForeignKey(Topic,on_delete=models.SET_NULL,null=True)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True) # 可以为空
-    # participants = 
+    participants = models.ManyToManyField(User, related_name='participants', blank=True)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True) # 只有第一次自动当前时间
     
@@ -35,6 +35,10 @@ class Message(models.Model):
     body = models.TextField()
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True) # 只有第一次自动当前时间
+    
+    class Meta:
+    # 设置排序
+        ordering = ['-updated', '-created']  
     
     def __str__(self):
         return self.body[0:50]

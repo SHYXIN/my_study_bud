@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from .models import Room, Topic
+from .models import Message, Room, Topic
 from .form import RoomForm
 # Create your views here.
 # # 构造数据
@@ -75,16 +75,32 @@ def home(request):
         )  # 获取数据库的数据
     topics = Topic.objects.all()
     room_count = rooms.count()
+    # room_messages = Message.objects.all()
+    room_messages = Message.objects.filter(Q(room__topic__name__icontains=q))
     
     # 将数据传给模板
     context = {'rooms': rooms, 'topics': topics,
-               'room_count':room_count}
+               'room_count':room_count, 'room_messages': room_messages}
     return render(request, 'base/home.html', context)
 
 
 def room(request, pk):
     room = Room.objects.get(id=pk)  # 根据pk获取正确的room
-    context = {'room': room}
+    room_messages = room.message_set.all()
+    participants = room.participants.all()
+    print(participants)
+    if request.method == 'POST':
+        messages = Message.objects.create(
+            user = request.user,
+            room = room,
+            body = request.POST.get('body'),
+        )
+        room.participants.add(request.user)
+        return redirect('room', pk=room.id) 
+    
+    context = {'room': room, 'room_messages': room_messages,
+               'participants':participants,
+               }
     return render(request, 'base/room.html', context)
 
 @login_required(login_url='login')
@@ -128,4 +144,20 @@ def deleteRoom(request, pk):
         room.delete()
         return redirect('home')
 
-    return render(request, 'base/delete_room.html', context)
+    return render(request, 'base/delete.html', context)
+
+@login_required(login_url='login')
+def deleteMessage(request, pk):
+    message = Message.objects.get(id=pk)
+    
+    # 不是room的拥有者，不允许修改
+    if request.user != message.user:
+        return HttpResponse('You are not allowed here !!')
+    
+    if request.method == 'POST':
+        message.delete()
+        # return redirect('room',message.room.id)
+        return redirect('home')
+
+    context = {'obj': message}
+    return render(request, 'base/delete.html', context)
