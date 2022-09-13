@@ -36,9 +36,9 @@ class Message(models.Model):
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True) # 只有第一次自动当前时间
     
-    class Meta:
-    # 设置排序
-        ordering = ['-updated', '-created']  
+    # class Meta:
+    # # 设置排序
+    #     ordering = ['-updated', '-created']  
     
     def __str__(self):
         return self.body[0:50]

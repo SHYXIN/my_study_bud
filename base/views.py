@@ -1,3 +1,5 @@
+from tkinter.font import ROMAN
+from unicodedata import name
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Q
@@ -88,7 +90,7 @@ def room(request, pk):
     room = Room.objects.get(id=pk)  # 根据pk获取正确的room
     room_messages = room.message_set.all()
     participants = room.participants.all()
-    print(participants)
+    # print(participants)
     if request.method == 'POST':
         messages = Message.objects.create(
             user = request.user,
@@ -115,32 +117,54 @@ def userProfile(request, pk):
 @login_required(login_url='login')
 def createRoom(request):
     form = RoomForm()
+    topics = Topic.objects.all()
     if request.method == 'POST':
         # print(request.POST)
-        form = RoomForm(request.POST)
-        if form.is_valid():
-            # form.save()
-            room = form.save(commit=False)
-            room.host = request.user
-            room.save()
-            return redirect('home')
-    context = {'form': form}
+        topic_name = request.POST.get('topic')
+        # 获取或者创建 话题
+        topic, created = Topic.objects.get_or_create(name=topic_name)
+        
+        Room.objects.create(
+            host=request.user,
+            topic=topic,
+            name=request.POST.get('name'),
+            description=request.POST.get('description'),
+        )
+        # form = RoomForm(request.POST)
+        # if form.is_valid():
+        #     # form.save()
+        #     room = form.save(commit=False)
+        #     room.host = request.user
+        #     room.save()
+        return redirect('home')
+    
+    context = {'form': form, 'topics':topics}
     return render(request, 'base/room_form.html', context)
 
 @login_required(login_url='login')
 def updateRoom(request, pk):
     room = Room.objects.get(id=pk)
     form = RoomForm(instance=room)
+    topics = Topic.objects.all()
     # 不是room的拥有者，不允许修改
     if request.user != room.host:
         return HttpResponse('You are not allowed here !!')
     
     if request.method == 'POST':
         form = RoomForm(request.POST, instance=room)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    context = {'form': form}
+        
+        topic_name = request.POST.get('topic')
+        # 获取或者创建 话题
+        topic, created = Topic.objects.get_or_create(name=topic_name)
+        room.name = request.POST.get('name')
+        room.topic = topic
+        room.description = request.POST.get('description')
+        room.save()
+        return redirect('home')
+        # if form.is_valid():
+        #     form.save()
+        #     return redirect('home')
+    context = {'form': form, 'topics': topics, 'room':room}
     return render(request, 'base/room_form.html', context)
 
 @login_required(login_url='login')
