@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from .models import Message, Room, Topic
-from .form import RoomForm
+from .form import RoomForm, UserForm
 # Create your views here.
 # # 构造数据
 # rooms = [
@@ -44,7 +44,7 @@ def loginPage(request):
             messages.error(request, 'Username OR password dose not exists.')
     
     context = {'page':page}
-    return render(request, 'base/login_resigter.html', context)
+    return render(request, 'base/login_register.html', context)
 
 def logoutUser(request):
     logout(request)  # 退出登录
@@ -65,7 +65,7 @@ def registerPage(request):
             messages.error(request, 'An error occured  during registration')
             
     context = {'page': page, 'form':form}
-    return render(request, 'base/login_resigter.html', context)
+    return render(request, 'base/login_register.html', context)
 
 def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
@@ -197,3 +197,17 @@ def deleteMessage(request, pk):
 
     context = {'obj': message}
     return render(request, 'base/delete.html', context)
+
+
+@login_required(login_url='login')
+def updateUser(request):
+    user = request.user
+    form = UserForm(instance=user)
+    
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context = {'form': form}
+    return render(request, 'base/update-user.html',context)
