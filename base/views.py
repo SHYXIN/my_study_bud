@@ -3,13 +3,12 @@ from unicodedata import name
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Q
-from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
-from .models import Message, Room, Topic
-from .form import RoomForm, UserForm
+
+from .models import Message, Room, Topic, User
+from .form import RoomForm, UserForm , MyUserCreationFrom 
 # Create your views here.
 # # 构造数据
 # rooms = [
@@ -26,17 +25,18 @@ def loginPage(request):
         return redirect('home')
 
     if request.method == 'POST':
-        username = request.POST.get('username').lower()
+        # username = request.POST.get('username').lower()
+        email = request.POST.get('email').lower()
         password = request.POST.get('password')
         try:
             # 验证有没有这个用户
-            user = User.objects.get(username=username)
+            user = User.objects.get(email=email)
         except:
             # 添加消息，用户不存在,会自动返回给前端
             messages.error(request, 'Username dose not exists.')
 
         # 通过了存在用户的验证，该校对密码了
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, email=email, password=password)
         if user is not None:
             # 成功校对上
             login(request, user)  # 给request增加登录信息
@@ -55,9 +55,9 @@ def logoutUser(request):
 
 def registerPage(request):
     page = 'register'
-    form = UserCreationForm()
+    form = MyUserCreationFrom()
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = MyUserCreationFrom(request.POST)
         if form.is_valid():
             user = form.save(commit=False)  # 保存並返回給user
             user.username = user.username.lower()  # 对大小写不敏感了
@@ -215,7 +215,7 @@ def updateUser(request):
     form = UserForm(instance=user)
 
     if request.method == 'POST':
-        form = UserForm(request.POST, instance=user)
+        form = UserForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
             return redirect('home')
