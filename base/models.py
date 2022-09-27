@@ -14,7 +14,7 @@ class User(AbstractUser):
     avatar = models.ImageField(null=True, default='avatar.svg')  
     
     USERNAME_FIELD = 'email'  # 登录方式
-    REQUIRED_FIELDS = []  # 必填信息
+    REQUIRED_FIELDS = ['username']  # 必填信息
 
 class Topic(models.Model):
     name = models.CharField(max_length=200)
