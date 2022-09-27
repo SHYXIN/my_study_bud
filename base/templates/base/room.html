@@ -125,12 +125,21 @@
               </div>
             </div>
           </div>
+          {% if request.user.is_authenticated%}
           <div class="room__message">
             <form method="POST" action="">
               {% csrf_token %}
               <input name="body" placeholder="Write your message here..." />
             </form>
           </div>
+          {% else %}
+            <div class="room__message">
+            <form>
+            <input name="body" placeholder="You can only send messages after logging in" readonly=True />
+          </form>
+          </div>
+          {% endif %}
+
         </div>
         <!-- Room End -->
 

@@ -5,6 +5,7 @@ from .models import Room,Topic,Message, User
 
 class UserAdmin(admin.ModelAdmin):
     exclude = ['password']
+    
 
 admin.site.register(User, UserAdmin)
 admin.site.register(Room)

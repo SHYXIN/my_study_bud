@@ -16,15 +16,22 @@
         <form class="form" action="" method="POST">
           {% csrf_token %}
           <div class="form__group form__group">
-            <label for="room_name">Username</label>
-            <input id="username" name="username" type="text" placeholder="e.g. dennis_ivy" />
+            <label for="room_name">Email</label>
+            <input id="username" name="email" type="text" placeholder="e.g. dennis_ivy" />
           </div>
           <div class="form__group">
             <label for="password">Password</label>
             <input id="password" name="password" type="password"
               placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
           </div>
-
+          {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+              <li>Try again</li>
+          </ul>
+          {% endif %}
           <button class="btn btn--main" type="submit">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
               <title>lock</title>
@@ -66,7 +73,14 @@
             {{field}}
           </div>
           {% endfor %}
-
+          {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+              <li>Try again</li>
+          </ul>
+          {% endif %}
           <button class="btn btn--main" type="submit">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
               <title>lock</title>
@@ -84,7 +98,7 @@
 
         <div class="auth__action">
           <p>Already signed up yet?</p>
-          <a href="{% url 'login' %}" class="btn btn--link">Sign Up</a>
+          <a href="{% url 'login' %}" class="btn btn--link">Login</a>
         </div>
       </div>
     </div>
