@@ -48,7 +48,6 @@ AUTH_USER_MODEL = 'base.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     # 添加中间件
     "corsheaders.middleware.CorsMiddleware",
     
@@ -136,7 +135,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'collected_static'
 MEDIA_ROOT = BASE_DIR / 'static/images'
 
 # Default primary key field type
