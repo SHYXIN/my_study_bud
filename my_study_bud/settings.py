@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-rknzs4npk&64!by^##a45e!)t#tou=3heszn_!*1njxoze2chl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -48,6 +48,7 @@ AUTH_USER_MODEL = 'base.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     # 添加中间件
     "corsheaders.middleware.CorsMiddleware",
     
@@ -135,7 +136,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-STATIC_ROOT = "/var/www/example.com/static/"
+STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_ROOT = BASE_DIR / 'static/images'
 
 # Default primary key field type
