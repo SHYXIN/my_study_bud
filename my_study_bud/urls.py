@@ -9,6 +9,7 @@ urlpatterns = [
     path('', include('base.urls')),
     # api
     path('api/', include('base.api.urls')),
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
 
 # 可以进入static去参考
