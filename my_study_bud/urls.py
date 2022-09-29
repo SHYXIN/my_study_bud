@@ -10,7 +10,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),  # 用切换语言的
     # api
     path('api/', include('base.api.urls')),
-    path('__debug__/', include('debug_toolbar.urls')),
+    # path('__debug__/', include('debug_toolbar.urls')),
 ]
 
 
