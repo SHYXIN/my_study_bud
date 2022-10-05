@@ -19,4 +19,7 @@ urlpatterns = [
 
     path('topics/', views.topicsPage, name='topics'),
     path('activity/', views.activityPage, name='activity'),
+    
+    # 测试
+    path('trans_test/',views.trans_test, name='trans_test'),
 ]

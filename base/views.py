@@ -232,3 +232,11 @@ def activityPage(request):
     room_messages = Message.objects.all()[:3]
     context = {'room_messages' :room_messages}
     return render(request, 'base/activity.html', context)
+
+
+from django.utils.translation import ugettext_lazy as _
+
+def trans_test(request):
+    
+    context = {'msg': _("Welcome to China")}
+    return render(request, 'base/trans_test.html', context)
