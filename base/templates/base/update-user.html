@@ -14,7 +14,7 @@
               </path>
             </svg>
           </a>
-          <h3>Edit your profile</h3>
+          <h3>{% translate "Edit your profile" %}</h3>
         </div>
       </div>
       <div class="layout__body">
@@ -28,8 +28,8 @@
           </div>
           {% endfor%}
           <div class="form__action">
-            <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">Cancel</a>
-            <button class="btn btn--main" type="submit">Update</button>
+            <a class="btn btn--dark" href="{{request.META.HTTP_REFERER}}">{% translate "Cancel" %}</a>
+            <button class="btn btn--main" type="submit">{% translate "Update" %}</button>
           </div>
         </form>
       </div>

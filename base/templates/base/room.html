@@ -15,7 +15,7 @@
                   ></path>
                 </svg>
               </a>
-              <h3>Study Room</h3>
+              <h3>{% translate "Study Room" %}</h3>
             </div>
             {% if room.host == request.user %}
             <div class="room__topRight">
@@ -27,7 +27,7 @@
                   width="32"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <title>edit</title>
+                  <title>{% translate "edit" %}</title>
                   <g>
                     <path d="m23.5 22h-15c-.276 0-.5-.224-.5-.5s.224-.5.5-.5h15c.276 0 .5.224.5.5s-.224.5-.5.5z" />
                   </g>
@@ -47,7 +47,7 @@
               </a>
               <a href="{%url 'delete-room' room.id %}">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                  <title>remove</title>
+                  <title>{% translate "remove" %}</title>
                   <path
                     d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z"
                   ></path>
@@ -80,7 +80,7 @@
                 <span>{{room.created|timesince}}</span>
               </div>
               <div class="room__hosted">
-                <p>Hosted By</p>
+                <p>{% translate "Hosted By" %}</p>
                 <a href="{% url 'user-profile' room.host.id %}" class="room__author">
                   <div class="avatar avatar--small">
                     <img src="{{room.host.avatar.url}}" />
@@ -111,7 +111,7 @@
                     <a href="{% url 'delete-message' message.id %}">
                       <div class="thread__delete">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                          <title>remove</title>
+                          <title>{% translate "remove" %}</title>
                           <path
                             d="M27.314 6.019l-1.333-1.333-9.98 9.981-9.981-9.981-1.333 1.333 9.981 9.981-9.981 9.98 1.333 1.333 9.981-9.98 9.98 9.98 1.333-1.333-9.98-9.98 9.98-9.981z"
                           ></path>
@@ -132,13 +132,13 @@
           <div class="room__message">
             <form method="POST" action="">
               {% csrf_token %}
-              <input name="body" placeholder="Write your message here..." />
+              <input name="body" placeholder="{% translate "Write your message here..." %}" />
             </form>
           </div>
           {% else %}
             <div class="room__message">
             <form>
-            <input name="body" placeholder="You can only send messages after logging in" readonly=True />
+            <input name="body" placeholder="{% translate "You can only send messages after logging in" %}" readonly=True />
           </form>
           </div>
           {% endif %}
@@ -148,7 +148,7 @@
 
         <!--   Start -->
         <div class="participants">
-          <h3 class="participants__top">Participants <span>({{participants.count}} Joined)</span></h3>
+          <h3 class="participants__top">{% translate "Participants" %} <span>({{participants.count}} {% trans "Joined" %})</span></h3>
           <div class="participants__list scroll">
             {% for user in participants %}
 

@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from .models import Message, Room, Topic, User
-from .form import RoomForm, UserForm , MyUserCreationFrom 
+from .form import RoomForm, UserForm, MyUserCreationFrom
 # Create your views here.
 # # 构造数据
 # rooms = [
@@ -31,7 +31,7 @@ def loginPage(request):
             user = User.objects.get(email=email)
         except:
             # 添加消息，用户不存在,会自动返回给前端
-            messages.error(request, 'Username dose not exists.')
+            messages.error(request, _('Username dose not exists.'))
 
         # 通过了存在用户的验证，该校对密码了
         user = authenticate(request, email=email, password=password)
@@ -40,7 +40,7 @@ def loginPage(request):
             login(request, user)  # 给request增加登录信息
             return redirect('home')
         else:
-            messages.error(request, 'Username OR password dose not exists.')
+            messages.error(request, _('Username OR password dose not exists.'))
 
     context = {'page': page}
     return render(request, 'base/login_register.html', context)

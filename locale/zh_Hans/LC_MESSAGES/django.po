@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-04 19:06+0800\n"
+"POT-Creation-Date: 2022-10-10 15:23+0800\n"
 "PO-Revision-Date: 2022-10-05 09:51+0000\n"
 "Last-Translator:   <wangxin@email.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Translated-Using: django-rosetta 0.9.8\n"
+
+#: .\base\form.py:10
+msgid "Password confirmation"
+msgstr "确认密码"
+
+#: .\base\form.py:13
+msgid "Enter the same password as before, for verification."
+msgstr "请再输出一次密码"
+
+#: .\base\models.py:11
+msgid "nickname"
+msgstr "昵称"
+
+#: .\base\models.py:12
+msgid "email"
+msgstr "邮箱"
 
 #: .\base\models.py:22
 msgid "topic name"
@@ -43,13 +59,190 @@ msgstr "描述"
 msgid "participants"
 msgstr "参与者"
 
-#: .\base\models.py:35
+#: .\base\models.py:35 .\base\models.py:50
 msgid "updated"
 msgstr "更新时间"
 
-#: .\base\models.py:36
+#: .\base\models.py:36 .\base\models.py:51
 msgid "created"
 msgstr "创建时间"
+
+#: .\base\models.py:47
+msgid "user"
+msgstr "发布者"
+
+#: .\base\models.py:48
+msgid "room"
+msgstr "所在房间"
+
+#: .\base\models.py:49
+msgid "body"
+msgstr "内容"
+
+#: .\base\templates\base\activity.html:17
+#: .\base\templates\base\activity_component.html:4
+#: .\base\templates\base\home.html:27
+msgid "Recent Activities"
+msgstr "最近动态"
+
+#: .\base\templates\base\activity.html:31
+#: .\base\templates\base\feed_component.html:12
+msgid "ago"
+msgstr "前"
+
+#: .\base\templates\base\activity.html:38
+#: .\base\templates\base\activity_component.html:22
+#: .\base\templates\base\room.html:50 .\base\templates\base\room.html:114
+msgid "remove"
+msgstr "删除"
+
+#: .\base\templates\base\activity.html:48
+#: .\base\templates\base\activity_component.html:32
+msgid "replied to post"
+msgstr "回复"
+
+#: .\base\templates\base\delete.html:19
+msgid "Back"
+msgstr "后退"
+
+#: .\base\templates\base\delete.html:26
+msgid "Are you sure you want to delete"
+msgstr "你确定要删除"
+
+#: .\base\templates\base\feed_component.html:36
+#: .\base\templates\base\room.html:151
+msgid "Joined"
+msgstr "参与"
+
+#: .\base\templates\base\home.html:26 .\base\templates\base\topics.html:18
+msgid "Browse Topics"
+msgstr "浏览话题"
+
+#: .\base\templates\base\home.html:32 .\base\templates\base\room.html:18
+msgid "Study Room"
+msgstr "学习房间"
+
+#: .\base\templates\base\home.html:33
+msgid "Rooms available"
+msgstr "被搜索到"
+
+#: .\base\templates\base\home.html:42
+msgid "Create Room"
+msgstr "创建房间"
+
+#: .\base\templates\base\login_register.html:15
+#: .\base\templates\base\login_register.html:68
+msgid "Find your study partner"
+msgstr "寻找学习伙伴"
+
+#: .\base\templates\base\login_register.html:20
+msgid "Email"
+msgstr "邮箱"
+
+#: .\base\templates\base\login_register.html:24
+msgid "Password"
+msgstr "密码"
+
+#: .\base\templates\base\login_register.html:40
+#: .\base\templates\base\login_register.html:103 .\templates\navbar.html:41
+msgid "Login"
+msgstr "登录"
+
+#: .\base\templates\base\login_register.html:47
+#: .\base\templates\base\login_register.html:83
+msgid "Try again"
+msgstr "再试一次"
+
+#: .\base\templates\base\login_register.html:53
+msgid "Haven't signed up yet?"
+msgstr "还没有账号"
+
+#: .\base\templates\base\login_register.html:54
+msgid "Sign Up"
+msgstr "注册账号"
+
+#: .\base\templates\base\login_register.html:64
+#: .\base\templates\base\login_register.html:97
+msgid "Register"
+msgstr "注册"
+
+#: .\base\templates\base\login_register.html:102
+msgid "Already signed up yet?"
+msgstr "已有账号"
+
+#: .\base\templates\base\profile.html:24
+msgid "Edit Profile"
+msgstr "编辑信息"
+
+#: .\base\templates\base\profile.html:28
+msgid "About"
+msgstr "简介"
+
+#: .\base\templates\base\profile.html:39
+msgid "Study Rooms Hosted by this person"
+msgstr "该用户创建的房间"
+
+#: .\base\templates\base\room.html:30
+msgid "edit"
+msgstr "编辑"
+
+#: .\base\templates\base\room.html:83
+msgid "Hosted By"
+msgstr "创建者"
+
+#: .\base\templates\base\room.html:135
+msgid "Write your message here..."
+msgstr ""
+
+#: .\base\templates\base\room.html:141
+msgid "You can only send messages after logging in"
+msgstr ""
+
+#: .\base\templates\base\room.html:151
+msgid "Participants"
+msgstr "参与者"
+
+#: .\base\templates\base\room_form.html:17
+msgid "Create/Update Study Room"
+msgstr "创建/更新房间"
+
+#: .\base\templates\base\room_form.html:25
+msgid "Enter a Topic"
+msgstr "输入话题"
+
+#: .\base\templates\base\room_form.html:29
+msgid "Select your topic"
+msgstr "选择你的话题"
+
+#: .\base\templates\base\room_form.html:38
+msgid "Room Name"
+msgstr "房间名"
+
+#: .\base\templates\base\room_form.html:43
+#, fuzzy
+#| msgid "description"
+msgid "Room Description"
+msgstr "描述"
+
+#: .\base\templates\base\room_form.html:50
+msgid "Submit"
+msgstr "提交"
+
+#: .\base\templates\base\topics.html:31
+msgid "Search for topics"
+msgstr "搜索话题.."
+
+#: .\base\templates\base\topics.html:37
+msgid "All"
+msgstr "全部"
+
+#: .\base\templates\base\topics_component.html:20
+msgid "More"
+msgstr "更多"
+
+#: .\base\templates\base\topics_component.html:22 .\templates\navbar.html:32
+msgid "chevron-down"
+msgstr "下拉"
 
 #: .\base\templates\base\trans_test.html:43
 msgid "Select"
@@ -71,17 +264,67 @@ msgstr ""
 msgid "Terms & Conditions"
 msgstr ""
 
+#: .\base\templates\base\update-user.html:17
+msgid "Edit your profile"
+msgstr "编辑信息"
+
+#: .\base\templates\base\update-user.html:31
+msgid "Cancel"
+msgstr "取消"
+
+#: .\base\templates\base\update-user.html:32
+#, fuzzy
+#| msgid "updated"
+msgid "Update"
+msgstr "更新时间"
+
+#: .\base\views.py:34
+msgid "Username dose not exists."
+msgstr "用户不存在"
+
+#: .\base\views.py:43
+msgid "Username OR password dose not exists."
+msgstr "用户名密码不匹配"
+
 #: .\base\views.py:241
 msgid "Welcome to China"
 msgstr ""
 
-#: .\my_study_bud\settings.py:139
+#: .\my_study_bud\settings.py:141
+msgid "Simplified Chinese"
+msgstr "简体中文"
+
+#: .\my_study_bud\settings.py:142
 msgid "English"
 msgstr ""
 
-#: .\my_study_bud\settings.py:140
-msgid "Simplified Chinese"
+#: .\templates\main.html:11
+msgid "StudyBuddy - Find study partners around the world!"
+msgstr "学习伙伴网 - 在全世界找到志同道合的学习者"
+
+#: .\templates\navbar.html:7
+msgid "StudyBuddy"
+msgstr "学习伙伴网"
+
+#: .\templates\navbar.html:12
+msgid "search"
+msgstr "搜索"
+
+#: .\templates\navbar.html:17
+msgid "Search for rooms..."
+msgstr "搜索房间.."
+
+#: .\templates\navbar.html:53
+msgid "Settings"
+msgstr "设置"
+
+#: .\templates\navbar.html:57
+msgid "sign-out"
 msgstr ""
+
+#: .\templates\navbar.html:65
+msgid "Logout"
+msgstr "注销"
 
 #: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
 msgid "Messages"
@@ -142,8 +385,8 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:269
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
-" hyphens."
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\core\validators.py:278
@@ -329,15 +572,15 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1288
 #, python-format
 msgid ""
-"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD "
-"HH:MM[:ss[.uuuuuu]][TZ] format."
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
+"uuuuuu]][TZ] format."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1292
 #, python-format
 msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD "
-"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1296
@@ -356,8 +599,8 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1585
 #, python-format
 msgid ""
-"“%(value)s” value has an invalid format. It must be in [DD] "
-"[[HH:]MM:]ss[.uuuuuu] format."
+"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
+"uuuuuu] format."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1588
@@ -516,8 +759,7 @@ msgid "Many-to-many relationship"
 msgstr ""
 
 #. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the
-#. label
+#. characters will prevent the default label_suffix to be appended to the label
 #: .\venv\Lib\site-packages\django\forms\boundfield.py:150
 msgid ":?.!"
 msgstr ""
@@ -567,8 +809,7 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\fields.py:553
 #, python-format
-msgid ""
-"Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
@@ -675,8 +916,7 @@ msgid "The inline value did not match the parent instance."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1193
-msgid ""
-"Select a valid choice. That choice is not one of the available choices."
+msgid "Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\forms\models.py:1311
@@ -1136,11 +1376,11 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\csrf.py:124
 msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or"
-" including the “Referrer-Policy: no-referrer” header, please remove them. "
-"The CSRF protection requires the “Referer” header to do strict referer "
-"checking. If you’re concerned about privacy, use alternatives like <a "
-"rel=\"noreferrer\" …> for links to third-party sites."
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
+"\" …> for links to third-party sites."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\csrf.py:132
@@ -1191,8 +1431,8 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\views\generic\dates.py:594
 #, python-format
 msgid ""
-"Future %(verbose_name_plural)s not available because "
-"%(class_name)s.allow_future is False."
+"Future %(verbose_name_plural)s not available because %(class_name)s."
+"allow_future is False."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\generic\dates.py:628
@@ -1248,10 +1488,10 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:222
 #, python-format
 msgid ""
-"You are seeing this page because <a "
-"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
-"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> is in your settings file "
-"and you have not configured any URLs."
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
+"\">DEBUG=True</a> is in your settings file and you have not configured any "
+"URLs."
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:230
