@@ -8,8 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 
 # Create your models here.
 class User(AbstractUser):
-    name = models.CharField(max_length=200, null=True)
-    email = models.EmailField(unique=True, null=True)
+    name = models.CharField(max_length=200, null=True, verbose_name=_('nickname'))
+    email = models.EmailField(unique=True, null=True, verbose_name=_('email'))
     bio = models.TextField(null=True)
     
     # 头像
@@ -44,11 +44,11 @@ class Room(models.Model):
     
 
 class Message(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    room = models.ForeignKey(Room, on_delete=models.CASCADE) # 级联删除
-    body = models.TextField()
-    updated = models.DateTimeField(auto_now=True)
-    created = models.DateTimeField(auto_now_add=True) # 只有第一次自动当前时间
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('user'))
+    room = models.ForeignKey(Room, on_delete=models.CASCADE, verbose_name=_('room')) # 级联删除
+    body = models.TextField(verbose_name=_('body'))
+    updated = models.DateTimeField(auto_now=True, verbose_name=_('updated'))
+    created = models.DateTimeField(auto_now_add=True, verbose_name=_('created')) # 只有第一次自动当前时间
     
     # class Meta:
     # # 设置排序

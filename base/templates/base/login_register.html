@@ -12,27 +12,20 @@
         </div>
       </div>
       <div class="layout__body">
-        <h2 class="auth__tagline">Find your study partner</h2>
+        <h2 class="auth__tagline">{% translate "Find your study partner" %}</h2>
 
         <form class="form" action="" method="POST">
           {% csrf_token %}
           <div class="form__group form__group">
-            <label for="room_name">Email</label>
+            <label for="room_name">{% translate "Email" %}</label>
             <input id="username" name="email" type="text" placeholder="e.g. dennis_ivy" />
           </div>
           <div class="form__group">
-            <label for="password">Password</label>
+            <label for="password">{% translate "Password" %}</label>
             <input id="password" name="password" type="password"
               placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" />
           </div>
-          {% if messages %}
-          <ul class="messages">
-              {% for message in messages %}
-              <li>{{ message }}</li>
-              {% endfor %}
-              <li>Try again</li>
-          </ul>
-          {% endif %}
+
           <button class="btn btn--main" type="submit">
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
               <title>lock</title>
@@ -44,13 +37,21 @@
               </path>
             </svg>
 
-            Login
+            {% translate "Login" %}
           </button>
+          {% if messages %}
+          <ul class="messages">
+              {% for message in messages %}
+              <li>{{ message }}</li>
+              {% endfor %}
+              <li>{% translate "Try again" %}</li>
+          </ul>
+          {% endif %}
         </form>
 
         <div class="auth__action">
-          <p>Haven't signed up yet?</p>
-          <a href="{% url 'register' %}" class="btn btn--link">Sign Up</a>
+          <p>{% translate "Haven't signed up yet?" %}</p>
+          <a href="{% url 'register' %}" class="btn btn--link">{% translate "Sign Up" %}</a>
         </div>
       </div>
     </div>
@@ -60,11 +61,11 @@
     <div class="layout__box">
       <div class="layout__boxHeader">
         <div class="layout__boxTitle">
-          <h3>Register</h3>
+          <h3>{% translate "Register" %}</h3>
         </div>
       </div>
       <div class="layout__body">
-        <h2 class="auth__tagline">Find your study partner</h2>
+        <h2 class="auth__tagline">{% translate "Find your study partner" %}</h2>
 
         <form class="form" action="" method="POST">
           {% csrf_token %}
@@ -79,7 +80,7 @@
               {% for message in messages %}
               <li>{{ message }}</li>
               {% endfor %}
-              <li>Try again</li>
+              <li>{% translate "Try again" %}</li>
           </ul>
           {% endif %}
           <button class="btn btn--main" type="submit">
@@ -93,13 +94,13 @@
               </path>
             </svg>
 
-            Register
+            {% translate "Register" %}
           </button>
         </form>
 
         <div class="auth__action">
-          <p>Already signed up yet?</p>
-          <a href="{% url 'login' %}" class="btn btn--link">Login</a>
+          <p>{% translate "Already signed up yet?" %}</p>
+          <a href="{% url 'login' %}" class="btn btn--link">{% translate "Login" %}</a>
         </div>
       </div>
     </div>
