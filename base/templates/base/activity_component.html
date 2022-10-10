@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="activities">
     <div class="activities__header">
       <h2>Recent Activities</h2>
@@ -11,7 +12,7 @@
           </div>
           <p>
             @{{message.user}}
-            <span>{{message.created|timesince}} days ago</span>
+            <span>{{message.created|timesince}}</span>
           </p>
         </a>
         {% if request.user == message.user%}

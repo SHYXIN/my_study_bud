@@ -42,19 +42,20 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'rest_framework',
     "corsheaders",
-    "debug_toolbar",
+    'rosetta',
 ]
 
 AUTH_USER_MODEL = 'base.User'
 
 MIDDLEWARE = [
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
-    
     'django.middleware.security.SecurityMiddleware',
     # 添加中间件
     "corsheaders.middleware.CorsMiddleware",
     
     'django.contrib.sessions.middleware.SessionMiddleware',
+    # 本地化
+    'django.middleware.locale.LocaleMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -117,10 +118,14 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
+# 本地化
+from django.utils.translation import ugettext_lazy as _
+# LANGUAGE_CODE = 'en-us'
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-hans'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
@@ -128,6 +133,17 @@ USE_L10N = True
 
 USE_TZ = True
 
+# 指定支持语言。这里为了简化只支持简体中文和英文
+LANGUAGES = (
+    ('zh-hans', _('Simplified Chinese')),
+    ('en', _('English')),
+)
+import os
+
+# 用于存放django.po和django.mo编译过的翻译文件
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -148,10 +164,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 允许所有网站访问api
 CORS_ALLOW_ALL_ORIGINS = True
-
-
-INTERNAL_IPS = [
-    # ...
-    "127.0.0.1",
-    # ...
-]
