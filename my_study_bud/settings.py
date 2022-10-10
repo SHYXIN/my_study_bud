@@ -42,12 +42,15 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'rest_framework',
     "corsheaders",
+    # "debug_toolbar",
     'rosetta',
 ]
 
 AUTH_USER_MODEL = 'base.User'
 
 MIDDLEWARE = [
+    # "debug_toolbar.middleware.DebugToolbarMiddleware",
+    
     'django.middleware.security.SecurityMiddleware',
     # 添加中间件
     "corsheaders.middleware.CorsMiddleware",
@@ -164,3 +167,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 允许所有网站访问api
 CORS_ALLOW_ALL_ORIGINS = True
+
+
+# INTERNAL_IPS = [
+#     # ...
+#     "127.0.0.1",
+#     # ...
+# ]
